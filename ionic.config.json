@@ -1,0 +1,7 @@
+{
+  "name": "PROJETO_TRIBO_GRUPO08",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
