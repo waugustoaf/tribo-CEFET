@@ -1,0 +1,89 @@
+ion-content {
+  --ion-background-color: var(--ion-color-background);
+  --ion-text-color: #fff;
+}
+
+.container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 0 0 32px;
+
+  img.logo {
+    object-fit: contain;
+    width: 40%;
+    margin: 0 auto;
+  }
+
+  > h2 {
+    font-weight: bold;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 16px;
+
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      -ms-overflow-style: none;
+      display: none;
+    }
+
+    .card {
+      background-color: transparent;
+      border: none;
+      outline: none;
+
+      width: 237px;
+      padding: 24px;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 16px;
+      box-sizing: border-box;
+      box-shadow: 0px 0px 12px -3px #FFFFFF;
+      margin: 12px;
+
+      h4 {
+        font-size: 18px;
+      }
+
+      h3 {
+        font-size: 32px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    .card-selected {
+      border: 3px solid var(--ion-color-green);
+    }
+  }
+
+  > button {
+    background-color: var(--ion-color-purple);
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    height: 52px;
+  }
+}
+
+.flex> *:nth-child(2) {
+  margin-left: 4px;
+}
+
+.bold {
+  font-weight: bold;
+}

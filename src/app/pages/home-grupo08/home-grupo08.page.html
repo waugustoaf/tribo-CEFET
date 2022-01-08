@@ -1,0 +1,29 @@
+<ion-content>
+  <div class="container">
+    <div class="header">
+      <img src="../../../assets/images/logo.png" alt="Tribo" />
+      <div class="user">
+        <button class="text">
+          <p>{{user.name}}</p>
+          <span>{{ formatActive(user.active) }}</span>
+        </button>
+        <button type="button" class="logout" (click)="logout()">
+          <ion-icon name="power-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="list">
+      <h2>Dietas</h2>
+      <div class="items">
+        <div *ngFor="let diet of diets">
+          <div class="item">
+            <h3>{{diet.food_type}}</h3>
+            <span>{{diet.feed_time}}</span>
+            <p>{{diet.instructions}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

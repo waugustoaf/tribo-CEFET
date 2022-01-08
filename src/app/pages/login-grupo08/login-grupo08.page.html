@@ -1,0 +1,32 @@
+<ion-content>
+  <div class="container">
+    <img src="../../../assets/images/logo.png" alt="Tribo" class="logo" />
+
+    <div class="title">
+      <h1>Entre agora mesmo.</h1>
+      <h4>Bem-vindo de volta. Sentimos sua falta.</h4>
+    </div>
+
+    <form [formGroup]="formGroup">
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+    </form>
+
+    <div class="footer">
+      <div class="link">
+        <span>Ainda não tem uma conta?</span>
+        <a href="/signup">Registre-se</a>
+      </div>
+
+      <button [disabled]="!formGroup.valid" (click)="handleSubmit()">
+        Entrar
+      </button>
+    </div>
+  </div>
+</ion-content>

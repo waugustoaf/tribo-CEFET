@@ -1,0 +1,33 @@
+<ion-content>
+  <div class="container">
+    <img src="../../../assets/images/logo.png" alt="Tribo" class="logo" />
+
+    <h1>Nossos planos</h1>
+
+    <div class="cards">
+      <div *ngFor="let plan of plans">
+        <button
+          class="card"
+          [class.card-selected]="plan.id === selectedPlan"
+          (click)="setSelectedPlan(plan.id)"
+        >
+          <h4>{{plan.name}}</h4>
+
+          <h3>{{formatValue(plan.value)}}</h3>
+
+          <div class="flex">
+            <span class="bold">Horários: </span>
+            <span>{{plan.schedule}}</span>
+          </div>
+
+          <div class="flex">
+            <span class="bold">Dias/semana: </span>
+            <span>{{plan.days}}</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <button type="button" (click)="submit()">Selecionar plano</button>
+  </div>
+</ion-content>

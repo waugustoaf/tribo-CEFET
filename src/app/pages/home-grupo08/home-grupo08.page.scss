@@ -1,0 +1,118 @@
+.container {
+  width: 100%;
+  min-height: 100%;
+  padding: 0 16px;
+  overflow-y: auto;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+
+    > img {
+      width: 80px;
+      object-fit: contain;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      button.text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        border: none;
+        background-color: transparent;
+        outline: none;
+
+        p {
+          font-size: 12px;
+          font-weight: bold;
+          margin: 0;
+        }
+
+        span {
+          font-size: 12px;
+          font-weight: normal;
+          margin: 0;
+        }
+      }
+
+      button.logout {
+        width: 36px;
+        height: 36px;
+        background-color: var(--ion-color-red);
+        border-radius: 8px;
+
+        ion-icon {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  .list {
+    margin-top: 32px;
+
+    > h2 {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .items {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        -ms-overflow-style: none;
+        display: none;
+      }
+
+      .item {
+        width: 200px;
+        height: 180px;
+        background-color: var(--ion-color-selection);
+        padding: 8px;
+        border-radius: 8px;
+
+        & > * {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+        }
+
+        h3 {
+          font-size: 15px;
+          font-weight: 600;
+          margin: 0;
+          -webkit-line-clamp: 1;
+          line-clamp: 1;
+        }
+
+        span {
+          font-size: 12px;
+          font-weight: 300;
+          -webkit-line-clamp: 1;
+          line-clamp: 1;
+        }
+
+        p {
+          margin: 8px 0 0;
+          font-size: 12px;
+          font-weight: 300;
+          -webkit-line-clamp: 7;
+          line-clamp: 7;
+          text-align: justify;
+        }
+
+      }
+    }
+  }
+}

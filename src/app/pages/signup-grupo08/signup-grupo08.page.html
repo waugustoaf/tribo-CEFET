@@ -1,0 +1,48 @@
+<ion-content>
+  <div class="container">
+    <div class="title">
+      <h1>Cadastre-se.</h1>
+      <h4>Se registre para ter acesso às funções do nosso app.</h4>
+    </div>
+
+    <form [formGroup]="formGroup">
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Repita a senha</ion-label>
+        <ion-input type="password" formControlName="repeatPassword"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">CPF</ion-label>
+        <ion-input type="text" formControlName="cpf"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Telefone</ion-label>
+        <ion-input type="text" formControlName="phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Data de nascimento</ion-label>
+        <ion-input type="date" formControlName="birth_date"></ion-input>
+      </ion-item>
+    </form>
+
+    <div class="footer">
+      <div class="link">
+        <span>Já possui uma conta?</span>
+        <a [routerLink]="['/login']">Entrar</a>
+      </div>
+
+      <button [disabled]="!formGroup.valid" (click)="handleSubmit()">Registrar</button>
+    </div>
+  </div>
+</ion-content>
