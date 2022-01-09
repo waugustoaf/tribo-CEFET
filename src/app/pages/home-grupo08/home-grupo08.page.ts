@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import {
+  AlertController,
+  NavController,
+  ToastController,
+} from '@ionic/angular';
 import { IDietsProps } from 'src/app/dtos/diets';
 import { IPlanProps } from 'src/app/dtos/plans';
 import { IUserProps } from 'src/app/dtos/user';
@@ -18,7 +23,9 @@ export class HomeGRUPO08Page implements OnInit {
 
   constructor(
     private authService: AuthenticationGRUPO08Service,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private alertController: AlertController,
+    private navController: NavController
   ) {
     this.user = this.authService.getUser();
     this.updatePlans();
@@ -33,16 +40,38 @@ export class HomeGRUPO08Page implements OnInit {
       message,
       duration: 2000,
     });
-    toast.present();
+    await toast.present();
   }
 
   async updatePlans() {
     try {
       const { data } = await api.get<IDietsProps[]>('/diets');
 
-      this.diets = [...data, ...data, ...data];
+      this.diets = data;
     } catch (error) {
       this.showToast(throwErrors(error, 'Falha ao buscar as dietas.'));
     }
+  }
+
+  async logout() {
+    const alert = await this.alertController.create({
+      header: 'Sair',
+      message: 'Deseja realmente sair?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Sair',
+          handler: () => {
+            this.authService.signOut();
+            this.navController.navigateForward('/login');
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 }

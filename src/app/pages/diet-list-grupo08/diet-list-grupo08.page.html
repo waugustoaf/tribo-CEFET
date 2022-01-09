@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="container">
+    <div class="header">
+      <div>
+        <button type="button" (click)="navigateBack()">
+          <ion-icon
+            [ios]="'chevron-back-outline'"
+            [md]="'chevron-back-sharp'"
+          ></ion-icon>
+        </button>
+        <h1>Dietas</h1>
+      </div>
+      <a href="/diet-edit">
+        <ion-icon
+          [ios]="'add-outline'"
+          [md]="'add-sharp'"
+        ></ion-icon>
+      </a>
+    </div>
+
+    <div class="items">
+      <div *ngFor="let diet of diets">
+        <div class="item">
+          <span>{{diet.food_type}}</span>
+          <a [href]="'diet-edit/' + diet.id">
+            <ion-icon
+              [ios]="'chevron-forward-outline'"
+              [md]="'chevron-forward-sharp'"
+            ></ion-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

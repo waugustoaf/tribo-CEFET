@@ -36,8 +36,8 @@ export class SignupGRUPO08Page implements OnInit {
         '',
         Validators.compose([
           Validators.required,
-          Validators.minLength(11),
-          Validators.maxLength(11),
+          Validators.minLength(14),
+          Validators.maxLength(14),
         ]),
       ],
       phone: [
@@ -67,7 +67,7 @@ export class SignupGRUPO08Page implements OnInit {
   async handleSubmit() {
     this.user.email = this.formGroup.value.email;
     this.user.password = this.formGroup.value.password;
-    this.user.cpf = this.formGroup.value.cpf;
+    this.user.cpf = this.formGroup.value.cpf.replace(/\D/g, '');
     this.user.name = this.formGroup.value.name;
     this.user.phone = this.formGroup.value.phone;
     this.user.birth_date = this.formGroup.value.birth_date;

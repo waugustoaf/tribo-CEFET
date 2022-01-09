@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { NavController, ToastController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { IAuthProps, IUserProps } from '../dtos/db';
 import { api } from '../helpers/api';
@@ -32,9 +33,20 @@ export class AuthenticationGRUPO08Service {
   private isAuthenticated: BehaviorSubject<boolean> =
     new BehaviorSubject<boolean>(null);
 
-  constructor(private toastController: ToastController) {
+  constructor(
+    private toastController: ToastController,
+    private navController: NavController
+  ) {
     this.auth = JSON.parse(localStorage.getItem('tribo:auth')) as IAuthProps;
     this.isAuthenticated.next(!!this.auth?.token);
+  }
+
+  set<KeyType extends keyof IAuthProps>(
+    key: KeyType,
+    value: IAuthProps[KeyType]
+  ) {
+    this.auth[key] = value;
+    localStorage.setItem('tribo:auth', JSON.stringify(this.auth));
   }
 
   async showToast(message: string): Promise<void> {
@@ -88,6 +100,25 @@ export class AuthenticationGRUPO08Service {
     }
   }
 
+  async editUser(userProps: CreateUserProps, id: string): Promise<boolean> {
+    try {
+      const { data } = await api.put<IUserProps>('/users/' + id, {
+        ...userProps,
+      });
+
+      if (data.id === this.auth.user.id) {
+        this.set('user', data);
+      }
+
+      return true;
+    } catch (err) {
+      await this.showToast(
+        throwErrors(err, 'Não foi possível editar o usuário.')
+      );
+      return false;
+    }
+  }
+
   signOut(): void {
     const oldAuth = JSON.parse(
       localStorage.getItem('tribo:auth')
@@ -100,7 +131,8 @@ export class AuthenticationGRUPO08Service {
     };
 
     this.isAuthenticated.next(!!auth?.token);
-    return localStorage.setItem('tribo:auth', JSON.stringify(auth));
+    localStorage.setItem('tribo:auth', JSON.stringify(auth));
+    this.navController.navigateRoot('/login');
   }
 
   getIsAuthenticated() {

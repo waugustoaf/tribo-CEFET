@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AdminGRUPO08Guard } from './guards/admin-grupo08.guard';
 import { AuthGRUPO08Guard } from './guards/auth-grupo08.guard';
 import { AutoLoginGRUPO08Guard } from './guards/auto-login-grupo08.guard';
 import { EmployeeGRUPO08Guard } from './guards/employee-grupo08.guard';
@@ -57,6 +58,68 @@ const routes: Routes = [
         (m) => m.UserEditGRUPO08PageModule
       ),
     canLoad: [AuthGRUPO08Guard],
+  },
+  {
+    path: 'user-edit',
+    loadChildren: () =>
+      import('./pages/user-edit-grupo08/user-edit-grupo08.module').then(
+        (m) => m.UserEditGRUPO08PageModule
+      ),
+    canLoad: [AuthGRUPO08Guard],
+  },
+  {
+    path: 'diet-list',
+    loadChildren: () =>
+      import('./pages/diet-list-grupo08/diet-list-grupo08.module').then(
+        (m) => m.DietListGRUPO08PageModule
+      ),
+    canLoad: [AuthGRUPO08Guard, EmployeeGRUPO08Guard],
+  },
+  {
+    path: 'diet-edit/:id',
+    loadChildren: () =>
+      import('./pages/diet-edit-group08/diet-edit-group08.module').then(
+        (m) => m.DietEditGROUP08PageModule
+      ),
+    canLoad: [AuthGRUPO08Guard, EmployeeGRUPO08Guard],
+  },
+  {
+    path: 'diet-edit',
+    loadChildren: () =>
+      import('./pages/diet-edit-group08/diet-edit-group08.module').then(
+        (m) => m.DietEditGROUP08PageModule
+      ),
+    canLoad: [AuthGRUPO08Guard, EmployeeGRUPO08Guard],
+  },
+  {
+    path: 'user-list',
+    loadChildren: () =>
+      import('./pages/user-list-grupo08/user-list-grupo08.module').then(
+        (m) => m.UserListGRUPO08PageModule
+      ),
+    canLoad: [AuthGRUPO08Guard, AdminGRUPO08Guard],
+  },
+  {
+    path: 'employee-list',
+    loadChildren: () =>
+      import('./pages/employee-list-grupo08/employee-list-grupo08.module').then(
+        (m) => m.EmployeeListGRUPO08PageModule
+      ),
+    canLoad: [AuthGRUPO08Guard, AdminGRUPO08Guard],
+  },
+  {
+    path: 'employee-edit/:id',
+    loadChildren: () =>
+      import('./pages/employee-edit-grupo08/employee-edit-grupo08.module').then(
+        (m) => m.EmployeeEditGRUPO08PageModule
+      ),
+  },
+  {
+    path: 'employee-edit',
+    loadChildren: () =>
+      import('./pages/employee-edit-grupo08/employee-edit-grupo08.module').then(
+        (m) => m.EmployeeEditGRUPO08PageModule
+      ),
   },
   {
     path: '',

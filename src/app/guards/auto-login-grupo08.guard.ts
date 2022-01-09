@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
+import { CanLoad, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, take, map } from 'rxjs/operators';
 import { AuthenticationGRUPO08Service } from '../services/authentication-grupo08.service';
 
 @Injectable({
@@ -18,10 +17,17 @@ export class AutoLoginGRUPO08Guard implements CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const isAuthenticated = !!this.authService.getUser();
+    const userLogged = this.authService.getUser();
 
-    if (isAuthenticated) {
-      this.router.navigateByUrl('/home', { replaceUrl: true });
+    if (!!userLogged) {
+      if (
+        userLogged?.role === 'administrator' ||
+        userLogged?.role === 'employee'
+      ) {
+        this.router.navigateByUrl('/home-guarded', { replaceUrl: true });
+      } else {
+        this.router.navigateByUrl('/home', { replaceUrl: true });
+      }
     } else {
       return true;
     }

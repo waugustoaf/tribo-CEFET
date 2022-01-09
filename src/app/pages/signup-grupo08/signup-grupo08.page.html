@@ -24,11 +24,11 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">CPF</ion-label>
-        <ion-input type="text" formControlName="cpf"></ion-input>
+        <ion-input type="text" formControlName="cpf" [brmasker]="{mask: '000.000.000-00', len: 14}"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Telefone</ion-label>
-        <ion-input type="text" formControlName="phone"></ion-input>
+        <ion-input type="text" formControlName="phone" [brmasker]="{mask: '(00)0.0000-0000'}"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Data de nascimento</ion-label>

@@ -7,7 +7,7 @@
           [md]="'chevron-back-sharp'"
         ></ion-icon>
       </button>
-      <h4>{{!!id ? 'Editar usuário' : 'Criar usuário'}}</h4>
+      <h4>{{!!id ? 'Editar funcionário' : 'Criar funcionário'}}</h4>
     </div>
 
     <form [formGroup]="formGroup">
@@ -47,11 +47,27 @@
         <ion-label position="stacked">Data de nascimento</ion-label>
         <ion-input type="date" formControlName="birth_date"></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Horas de trabalho/dia</ion-label>
+        <ion-input type="number" formControlName="hours_per_day"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Salário</ion-label>
+        <ion-input type="number" formControlName="wage"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Educação</ion-label>
+        <ion-input type="text" formControlName="education"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Dia de pagamento</ion-label>
+        <ion-input type="text" formControlName="payment_day"></ion-input>
+      </ion-item>
     </form>
 
     <div class="footer">
       <button
-        *ngIf="!!this.id && this.id !== loggedUser.id"
+        *ngIf="!!this.id"
         class="delete"
         (click)="handleDelete()"
       >

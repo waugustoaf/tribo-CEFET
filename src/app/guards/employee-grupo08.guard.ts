@@ -12,7 +12,9 @@ export class EmployeeGRUPO08Guard implements CanLoad {
   ) {}
 
   canLoad() {
-    const isEmployee = this.authService?.getUser()?.role === 'employee';
+    const isEmployee =
+      this.authService?.getUser()?.role === 'employee' ||
+      this.authService?.getUser()?.role === 'administrator';
 
     if (!isEmployee) {
       this.router.navigateByUrl('/home');

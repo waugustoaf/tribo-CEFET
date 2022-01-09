@@ -21,7 +21,7 @@ export class LoginGRUPO08Page implements OnInit {
     private navController: NavController,
     private formBuilder: FormBuilder,
     private authService: AuthenticationGRUPO08Service,
-    private toastController: ToastController,
+    private toastController: ToastController
   ) {
     this.formGroup = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -49,14 +49,21 @@ export class LoginGRUPO08Page implements OnInit {
       const signed = await this.authService.signIn(this.user);
 
       if (signed) {
-        this.navController.navigateRoot('/home');
+        if (
+          this.authService.getUser()?.role === 'administrator' ||
+          this.authService.getUser()?.role === 'employee'
+        ) {
+          this.navController.navigateRoot('/home-guarded');
+        } else {
+          this.navController.navigateRoot('/home');
+        }
       } else {
         await this.showToast('Usuário e/ou senha inválidos');
         this.navController.navigateBack('/login');
       }
     } catch (error) {
       await this.showToast(
-        throwErrors(error, 'Não foi possível realizar o login'),
+        throwErrors(error, 'Não foi possível realizar o login')
       );
     }
   }

@@ -3,10 +3,10 @@
     <div class="header">
       <img src="../../../assets/images/logo.png" alt="Tribo" />
       <div class="user">
-        <button class="text">
+        <a [href]="'/user-edit/' + user.id" class="text">
           <p>{{user.name}}</p>
           <span>{{ formatActive(user.active) }}</span>
-        </button>
+        </a>
         <button type="button" class="logout" (click)="logout()">
           <ion-icon name="power-outline"></ion-icon>
         </button>

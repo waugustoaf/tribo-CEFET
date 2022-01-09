@@ -1,0 +1,38 @@
+<ion-content>
+  <div class="container">
+    <div class="header">
+      <div>
+        <button type="button" (click)="navigateBack()">
+          <ion-icon
+            [ios]="'chevron-back-outline'"
+            [md]="'chevron-back-sharp'"
+          ></ion-icon>
+        </button>
+        <h1>Usuários</h1>
+      </div>
+      <a href="/user-edit">
+        <ion-icon
+          [ios]="'add-outline'"
+          [md]="'add-sharp'"
+        ></ion-icon>
+      </a>
+    </div>
+
+    <div class="items">
+      <div *ngFor="let user of users">
+        <div class="item">
+          <div>
+            <span>{{user.name}}</span>
+            <p>{{formatRole(user.role)}}</p>
+          </div>
+          <a [href]="'user-edit/' + user.id">
+            <ion-icon
+              [ios]="'chevron-forward-outline'"
+              [md]="'chevron-forward-sharp'"
+            ></ion-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

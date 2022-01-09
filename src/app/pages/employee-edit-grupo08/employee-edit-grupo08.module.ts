@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SignupGRUPO08PageRoutingModule } from './signup-grupo08-routing.module';
+import { EmployeeEditGRUPO08PageRoutingModule } from './employee-edit-grupo08-routing.module';
 
-import { SignupGRUPO08Page } from './signup-grupo08.page';
+import { EmployeeEditGRUPO08Page } from './employee-edit-grupo08.page';
 import { BrMaskerModule } from 'br-mask';
 
 @NgModule({
@@ -14,10 +14,10 @@ import { BrMaskerModule } from 'br-mask';
     CommonModule,
     FormsModule,
     IonicModule,
-    SignupGRUPO08PageRoutingModule,
+    EmployeeEditGRUPO08PageRoutingModule,
     ReactiveFormsModule,
-    BrMaskerModule
+    BrMaskerModule,
   ],
-  declarations: [SignupGRUPO08Page],
+  declarations: [EmployeeEditGRUPO08Page],
 })
-export class SignupGRUPO08PageModule {}
+export class EmployeeEditGRUPO08PageModule {}

@@ -1,0 +1,84 @@
+.container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 0 16px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+
+    > img {
+      width: 80px;
+      object-fit: contain;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      a.text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        text-decoration: none;
+        color: #fff;
+
+        p {
+          font-size: 12px;
+          font-weight: bold;
+          margin: 0;
+        }
+
+        span {
+          font-size: 12px;
+          font-weight: normal;
+          margin: 0;
+        }
+      }
+
+      button.logout {
+        width: 36px;
+        height: 36px;
+        background-color: var(--ion-color-red);
+        border-radius: 8px;
+
+        ion-icon {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  .items {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    > div {
+      width: 100%;
+      border-radius: 8px;
+      height: 48px;
+      background-color: var(--ion-color-selection);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+}

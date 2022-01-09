@@ -1,9 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>home_guarded_GRUPO08</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="container">
+    <div class="header">
+      <img src="../../../assets/images/logo.png" alt="Tribo" />
+      <div class="user">
+        <a [href]="'/user-edit/' + user.id" class="text">
+          <p>{{user.name}}</p>
+          <span>{{ formatActive(user.active) }}</span>
+        </a>
+        <button type="button" class="logout" (click)="logout()">
+          <ion-icon name="power-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
 
+    <div class="items">
+      <div *ngFor="let page of pages">
+        <a href="{{page.route}}">{{page.title}}</a>
+      </div>
+    </div>
+  </div>
 </ion-content>

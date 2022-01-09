@@ -4,20 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SignupGRUPO08PageRoutingModule } from './signup-grupo08-routing.module';
+import { DietEditGROUP08PageRoutingModule } from './diet-edit-group08-routing.module';
 
-import { SignupGRUPO08Page } from './signup-grupo08.page';
-import { BrMaskerModule } from 'br-mask';
+import { DietEditGROUP08Page } from './diet-edit-group08.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SignupGRUPO08PageRoutingModule,
+    DietEditGROUP08PageRoutingModule,
     ReactiveFormsModule,
-    BrMaskerModule
   ],
-  declarations: [SignupGRUPO08Page],
+  declarations: [DietEditGROUP08Page]
 })
-export class SignupGRUPO08PageModule {}
+export class DietEditGROUP08PageModule {}
