@@ -19,20 +19,20 @@ import { throwErrors } from 'src/app/helpers/throwErrors';
 export class EmployeeEditGRUPO08Page implements OnInit {
   private id: string;
   private formGroup: FormGroup;
-  private employee: {
-    name: '';
-    email: '';
-    password: '';
-    cpf: '';
-    phone: '';
-    birth_date: '';
-    role: 'employee';
-    hours_per_day?: null;
-    wage: null;
-    education: '';
-    payment_day: null;
-    hoursPerDay?: null;
-    user?: IUserProps;
+  private employee = {
+    name: '',
+    email: '',
+    password: '',
+    cpf: '',
+    phone: '',
+    birth_date: '',
+    role: 'employee',
+    hours_per_day: null,
+    wage: null,
+    education: '',
+    payment_day: null,
+    hoursPerDay: null,
+    user: null,
   };
 
   constructor(

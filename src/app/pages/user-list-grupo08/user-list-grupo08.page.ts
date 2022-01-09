@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { IUserProps } from 'src/app/dtos/user';
 import { api } from 'src/app/helpers/api';
 import { throwErrors } from 'src/app/helpers/throwErrors';
@@ -15,7 +15,8 @@ export class UserListGRUPO08Page implements OnInit {
 
   constructor(
     private authService: AuthenticationGRUPO08Service,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private navController: NavController
   ) {
     this.updateUsers();
   }
@@ -53,5 +54,9 @@ export class UserListGRUPO08Page implements OnInit {
       default:
         return 'Usuário';
     }
+  }
+
+  navigateBack() {
+    this.navController.navigateBack('/home-guarded');
   }
 }
