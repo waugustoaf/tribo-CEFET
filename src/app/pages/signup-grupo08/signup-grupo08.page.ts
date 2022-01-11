@@ -53,7 +53,7 @@ export class SignupGRUPO08Page implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.signOut();
+    this.authService.clearAuth();
   }
 
   async showToast(message) {

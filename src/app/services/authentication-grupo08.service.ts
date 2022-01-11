@@ -135,6 +135,21 @@ export class AuthenticationGRUPO08Service {
     this.navController.navigateRoot('/login');
   }
 
+  clearAuth() {
+    const oldAuth = JSON.parse(
+      localStorage.getItem('tribo:auth')
+    ) as IAuthProps;
+
+    const auth: IAuthProps = {
+      hasSeen: oldAuth?.hasSeen ?? false,
+      token: '',
+      user: null,
+    };
+
+    this.isAuthenticated.next(!!auth?.token);
+    localStorage.setItem('tribo:auth', JSON.stringify(auth));
+  }
+
   getIsAuthenticated() {
     return this.isAuthenticated;
   }
