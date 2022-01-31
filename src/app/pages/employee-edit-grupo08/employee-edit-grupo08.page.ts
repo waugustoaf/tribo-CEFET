@@ -7,7 +7,6 @@ import {
   ToastController,
 } from '@ionic/angular';
 import { addDays, format } from 'date-fns';
-import { IUserProps } from 'src/app/dtos/user';
 import { api } from 'src/app/helpers/api';
 import { throwErrors } from 'src/app/helpers/throwErrors';
 

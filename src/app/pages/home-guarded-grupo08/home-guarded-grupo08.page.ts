@@ -25,12 +25,19 @@ export class HomeGuardedGRUPO08Page implements OnInit {
     this.user = this.authService.getUser();
 
     if (this.user.role === 'employee') {
-      this.pages = [{ title: 'Gerenciar dietas', route: '/diet-list' }];
+      this.pages = [
+        { title: 'Gerenciar dietas', route: '/diet-list' },
+        { title: 'Gerenciar exercícios', route: '/exercise-list' },
+        { title: 'Gerenciar dietas', route: '/diet-list' },
+        { title: 'Gerenciar exercícios', route: '/exercise-list' },
+      ];
     } else if (this.user.role === 'administrator') {
       this.pages = [
         { title: 'Gerenciar dietas', route: '/diet-list' },
         { title: 'Gerenciar clientes', route: '/user-list' },
         { title: 'Gerenciar funcionários', route: '/employee-list' },
+        { title: 'Gerenciar pagamentos', route: '/payment-list' },
+        { title: 'Gerenciar exercícios', route: '/exercise-list' },
       ];
     }
   }

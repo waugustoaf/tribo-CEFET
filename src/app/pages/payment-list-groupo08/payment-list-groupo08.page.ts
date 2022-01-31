@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
-import { IEmployeeProps } from 'src/app/dtos/employee';
+import { IPaymentsProps } from 'src/app/dtos/payment';
 import { api } from 'src/app/helpers/api';
 import { throwErrors } from 'src/app/helpers/throwErrors';
 
 @Component({
-  selector: 'app-employee-list-grupo08',
-  templateUrl: './employee-list-grupo08.page.html',
-  styleUrls: ['./employee-list-grupo08.page.scss'],
+  selector: 'app-payment-list-groupo08',
+  templateUrl: './payment-list-groupo08.page.html',
+  styleUrls: ['./payment-list-groupo08.page.scss'],
 })
-export class EmployeeListGRUPO08Page implements OnInit {
-  private employees: IEmployeeProps[] = [];
+export class PaymentListGroupo08Page implements OnInit {
+  private payments: IPaymentsProps[] = [];
 
   constructor(
     private toastController: ToastController,
     private navController: NavController
   ) {
-    this.updateEmployees();
+    this.updatePayments();
   }
 
   ngOnInit() {}
@@ -26,17 +26,16 @@ export class EmployeeListGRUPO08Page implements OnInit {
       message,
       duration: 2000,
     });
-    toast.present();
   }
 
-  async updateEmployees() {
+  async updatePayments() {
     try {
-      const { data } = await api.get<IEmployeeProps[]>('/employees');
+      const { data } = await api.get<IPaymentsProps[]>('/payments');
 
-      this.employees = data;
+      this.payments = data;
     } catch (error) {
       await this.showToast(
-        throwErrors(error, 'Não foi possível buscar os funcionários.')
+        throwErrors(error, 'Não foi possível buscar os pagamentos.')
       );
     }
   }

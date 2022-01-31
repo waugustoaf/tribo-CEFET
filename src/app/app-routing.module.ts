@@ -126,6 +126,49 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full',
   },
+  {
+    path: 'payment-list',
+    loadChildren: () =>
+      import('./pages/payment-list-groupo08/payment-list-groupo08.module').then(
+        (m) => m.PaymentListGroupo08PageModule
+      ),
+    canLoad: [AuthGRUPO08Guard, AdminGRUPO08Guard],
+  },
+  {
+    path: 'payment-edit',
+    loadChildren: () =>
+      import('./pages/payment-edit-grupo08/payment-edit-grupo08.module').then(
+        (m) => m.PaymentEditGrupo08PageModule
+      ),
+  },
+  {
+    path: 'payment-edit/:id',
+    loadChildren: () =>
+      import('./pages/payment-edit-grupo08/payment-edit-grupo08.module').then(
+        (m) => m.PaymentEditGrupo08PageModule
+      ),
+  },
+  {
+    path: 'exercise-list',
+    loadChildren: () =>
+      import('./pages/exercise-list-grupo08/exercise-list-grupo08.module').then(
+        (m) => m.ExerciseListGrupo08PageModule
+      ),
+  },
+  {
+    path: 'exercise-edit',
+    loadChildren: () =>
+      import('./pages/exercise-edit-grupo08/exercise-edit-grupo08.module').then(
+        (m) => m.ExerciseEditGrupo08PageModule
+      ),
+  },
+  {
+    path: 'exercise-edit/:id',
+    loadChildren: () =>
+      import('./pages/exercise-edit-grupo08/exercise-edit-grupo08.module').then(
+        (m) => m.ExerciseEditGrupo08PageModule
+      ),
+  },
 ];
 
 @NgModule({

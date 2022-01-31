@@ -1,0 +1,61 @@
+<ion-content>
+  <div class="container">
+    <div class="title">
+      <button type="button" (click)="navigateBack()">
+        <ion-icon
+          [ios]="'chevron-back-outline'"
+          [md]="'chevron-back-sharp'"
+        ></ion-icon>
+      </button>
+      <h4>{{!!id ? 'Editar pagamento' : 'Criar pagamento'}}</h4>
+    </div>
+
+    <img
+      *ngIf="!!payment.receipt_image"
+      src="{{ payment.receipt_image }}"
+      alt="Comprovante"
+      class="comprovante"
+    />
+
+    <form [formGroup]="formGroup">
+      <ion-item>
+        <ion-label position="stacked">Usuário</ion-label>
+        <ion-select
+          cancelText="Cancelar"
+          okText="Confirmar"
+          placeholder="Selecione um usuário"
+          formControlName="user_id"
+        >
+          <ion-select-option *ngFor="let user of users" value="{{user.id}}"
+            >{{user.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Valor</ion-label>
+        <ion-input type="number" formControlName="value"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Comprovante</ion-label>
+        <ion-input type="text" formControlName="receipt_image"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Mês e Ano</ion-label>
+        <ion-input type="text" formControlName="month_and_year"></ion-input>
+      </ion-item>
+    </form>
+
+    <div class="footer">
+      <button *ngIf="!!this.id" class="delete" (click)="handleDelete()">
+        Deletar
+      </button>
+      <button
+        [disabled]="!formGroup.valid"
+        class="submit"
+        (click)="handleSubmit()"
+      >
+        {{!!id ? 'Editar' : 'Registrar'}}
+      </button>
+    </div>
+  </div>
+</ion-content>

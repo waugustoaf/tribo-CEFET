@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
-import { IEmployeeProps } from 'src/app/dtos/employee';
+import { IExerciseProps } from 'src/app/dtos/exercise';
 import { api } from 'src/app/helpers/api';
 import { throwErrors } from 'src/app/helpers/throwErrors';
 
 @Component({
-  selector: 'app-employee-list-grupo08',
-  templateUrl: './employee-list-grupo08.page.html',
-  styleUrls: ['./employee-list-grupo08.page.scss'],
+  selector: 'app-exercise-list-grupo08',
+  templateUrl: './exercise-list-grupo08.page.html',
+  styleUrls: ['./exercise-list-grupo08.page.scss'],
 })
-export class EmployeeListGRUPO08Page implements OnInit {
-  private employees: IEmployeeProps[] = [];
+export class ExerciseListGrupo08Page implements OnInit {
+  private exercises: IExerciseProps[] = [];
 
   constructor(
     private toastController: ToastController,
     private navController: NavController
   ) {
-    this.updateEmployees();
+    this.updateExercises();
   }
 
   ngOnInit() {}
@@ -26,19 +26,22 @@ export class EmployeeListGRUPO08Page implements OnInit {
       message,
       duration: 2000,
     });
-    toast.present();
   }
 
-  async updateEmployees() {
+  async updateExercises() {
     try {
-      const { data } = await api.get<IEmployeeProps[]>('/employees');
+      const { data } = await api.get<IExerciseProps[]>('/exercises');
 
-      this.employees = data;
+      this.exercises = data;
     } catch (error) {
       await this.showToast(
-        throwErrors(error, 'Não foi possível buscar os funcionários.')
+        throwErrors(error, 'Não foi possível buscar os exercícios.')
       );
     }
+  }
+
+  formatType(type: 'gain' | 'loss') {
+    return type === 'gain' ? 'Ganho' : 'Perda';
   }
 
   navigateBack() {
